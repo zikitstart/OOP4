@@ -3,25 +3,27 @@ package Driver;
 import Transport.Bus;
 import Transport.Competing;
 
-public class CategoryD <T extends Bus & Competing> extends Driver  {
+public class CategoryD <T extends Bus & Competing> extends Driver<T> {
 
     public CategoryD(String fullName, boolean driverLicense, int experience) {
         super(fullName, driverLicense, experience);
     }
-    public void race(T bus) {
-        System.out.println("Водитель " + getFullName() + " управляет автомобилем: " + bus + " и будет участвовать в заезде.");
+
+    @Override
+    public void race(T auto) {
+        super.race(auto);
     }
 
     @Override
     public void startMoving() {
-
+        System.out.println("Начинаю движение.");
     }
     @Override
     public void stop() {
-
+        System.out.println("Останавливаю автомобиль.");
     }
     @Override
     public void refuel() {
-
+        System.out.println("Заправляю автомобиль.");
     }
 }

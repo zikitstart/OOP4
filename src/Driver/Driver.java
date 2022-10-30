@@ -1,10 +1,12 @@
 package Driver;
 
+import Transport.Competing;
+import Transport.Transport;
 import Transport.Utility;
 
 import java.util.Objects;
 
-public abstract class Driver {
+public abstract class Driver <T extends Transport & Competing > {
     private String fullName;
     private boolean driverLicense;
     private int experience;
@@ -47,6 +49,9 @@ public abstract class Driver {
         return Objects.hash(fullName, driverLicense, experience);
     }
 
+    public void race(T auto) {
+        System.out.println("Водитель " + getFullName() + " управляет автомобилем: " + auto + " и будет участвовать в заезде.");
+    }
     public abstract void startMoving();
     public abstract void stop();
     public abstract void refuel();
